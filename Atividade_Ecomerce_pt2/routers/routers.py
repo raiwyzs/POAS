@@ -40,8 +40,9 @@ from crud.crud import (
     deletar_estoque,
 )
 from models import Produto, Categoria, Pedido, Pagamento, Endereco, Avaliacao, Estoque
+from .auth_router import get_current_user
 
-router = APIRouter(tags=["Ecommerce"])
+router = APIRouter(tags=["Ecommerce"], dependencies=[Depends(get_current_user)])
 
 
 @router.post("/produtos/")
